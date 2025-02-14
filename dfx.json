@@ -1,0 +1,29 @@
+{
+  "canisters": {
+    "ghost_agent_icp_backend": {
+      "main": "src/ghost_agent_icp_backend/main.mo",
+      "type": "motoko"
+    },
+    "ghost_agent_icp_frontend": {
+      "dependencies": [
+        "ghost_agent_icp_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/ghost_agent_icp_frontend/src/index.html"
+      },
+      "source": [
+        "src/ghost_agent_icp_frontend/assets",
+        "dist/ghost_agent_icp_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
