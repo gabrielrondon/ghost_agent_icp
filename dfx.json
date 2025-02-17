@@ -1,29 +1,28 @@
 {
+  "version": 1,
   "canisters": {
-    "ghost_agent_icp_backend": {
-      "main": "src/ghost_agent_icp_backend/main.mo",
-      "type": "motoko"
+    "ghost_agent_icp": {
+      "type": "rust",
+      "package": "ghost_agent_icp",
+      "candid": "src/ghost_agent_icp/ghost_agent_icp.did",
+      "wasm": "target/wasm32-unknown-unknown/release/ghost_agent_icp.wasm",
+      "build": "cargo build --target wasm32-unknown-unknown --release",
+      "dependencies": []
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000"
     },
-    "ghost_agent_icp_frontend": {
-      "dependencies": [
-        "ghost_agent_icp_backend"
-      ],
-      "frontend": {
-        "entrypoint": "src/ghost_agent_icp_frontend/src/index.html"
-      },
-      "source": [
-        "src/ghost_agent_icp_frontend/assets",
-        "dist/ghost_agent_icp_frontend/"
-      ],
-      "type": "assets"
+    "ic": {
+      "providers": [
+        "https://ic0.app"
+      ]
     }
   },
   "defaults": {
     "build": {
-      "args": "",
-      "packtool": ""
+      "packtool": "cargo"
     }
-  },
-  "output_env_file": ".env",
-  "version": 1
+  }
 }

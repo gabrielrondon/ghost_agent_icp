@@ -1,0 +1,7 @@
+service : {
+    generate_reference : () -> (text);
+    assign_task : (text, text) -> (opt text);
+    get_tasks : (text) -> (opt vec record { id: text; description: text; status: text });
+    execute_tasks : (text) -> (opt vec record { id: text; description: text; status: text });
+    delete_reference : (text) -> (bool);
+}
